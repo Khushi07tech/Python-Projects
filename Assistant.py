@@ -1,3 +1,5 @@
+#This is my project # 2
+
 import time
 def AI_assistant (moods):
     match moods:
