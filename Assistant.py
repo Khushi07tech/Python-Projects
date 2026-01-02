@@ -5,6 +5,8 @@
 import random
 import time
 
+points = 0
+
 def AI_assistant (moods):
     match moods:
         case 1:
@@ -29,33 +31,33 @@ def study_mood (study):
             return "Ohh this is the loved one! Make sure to read the book actively."
         case _:
             return "Subject not found"
-def health_mood (sleep, points):
+def health_mood (sleep, point):
     match sleep:
         case _ if sleep < 6:
-            return "You are not sleeping enough😤"
-            points += 0
+            point = point + 0
+            return "You are not sleeping enough😤", point
         case _ if sleep > 8:
-            return "You are sleeping too much🙄"
-            points += 0
+            point = point + 0
+            return "You are sleeping too much🙄", point
         case _ if 6 <= sleep <= 8:
-            return "Yeah. That's the right number of hours to sleep💤"
-            points += 2
+            point = point + 2
+            return "Yeah. That's the right number of hours to sleep💤", point
         case _:
             return "Invalid"
-def exercise_hours(exercise, points):
+def exercise_hours(exercise, point):
     match exercise:
         case _ if exercise == 1:
-            print ("Superb! Your routine should ideally be: stretches in the morning or evening and intense exercises on alternate day")
-            points += 3
+            point = point + 3
+            return "Superb! Your routine should ideally be: stretches in the morning or evening and intense exercises on alternate day", point
         case _ if exercise == 2:
-            print ("Good! but try at least doing body stretches everyday (morning or evening whatever suits you")
-            points += 2
+            point = point + 2
+            return "Good! but try at least doing body stretches everyday (morning or evening whatever suits you", point
         case _ if exercise == 3:
-            print ("Hmm... not good enough. Try finding a gym/exercise buddy who can remind you to stay consistent")
-            points += 1
+            point = point + 1
+            return "Hmm... not good enough. Try finding a gym/exercise buddy who can remind you to stay consistent", point
         case _ if exercise == 4:
-            print ("Well, you're in the worse category. Move your body, don't stay idle. If you keep being in this categoy, then you are going to lament this in the long run.")
-            points += 0
+            point = point + 0
+            return "Well, you're in the worse category. Move your body, don't stay idle. If you keep being in this categoy, then you are going to lament this in the long run.", point
         case _:
             print ("Invalid")
 def tech_mood (tech):
@@ -164,19 +166,19 @@ def main ():
                 else:
                     print ("Invalid input")
         elif user_mood == 2:
-            points = 0
-            sleep_hours = int (input ("Enter the number of whole hours u sleep: "))
-            print (health_mood(sleep_hours))
+            sleep_hours = int(input("Enter the number of whole hours u sleep: "))
+            message, point = health_mood(sleep_hours, points)
+            print(message)
 
-            print ("How often do you exercise?")
-            print ("1. Everyday")
-            print ("2. Alternate days")
-            print ("3. Few times in a month")
-            print ("4. I don't")
-            exercise = int(input ("Select (1-4): "))
-            print (exercise_hours(exercise))
-
-            print (f"Your total health points are {points}/5")
+            print("How often do you exercise?")
+            print("1. Everyday")
+            print("2. Alternate days")
+            print("3. Few times in a month")
+            print("4. I don't")
+            exercise = int(input("Select (1-4): "))
+            message, point = exercise_hours(exercise, points)
+            print(message)
+            print(f"Your total health points are {point}/5")
         elif user_mood == 3:
             print ("Enter a langauge u wanna learn.")
             print ("1. Python")
