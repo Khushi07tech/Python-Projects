@@ -1,11 +1,13 @@
 #TO DO:
-#Points in health never display
-#there's a bug in the health mood
+#Some decorative text and a greater time delay needed for bigger responses so that they can be read thouroughly
+#validation checks (such as under study topics, hackathons).
+#Reprompt the user for invalid inputs esp in languages
+#remove "none" such as under hackathons
 
 import random
 import time
 
-points = 0
+health_points = 0
 
 def AI_assistant (moods):
     match moods:
@@ -31,33 +33,26 @@ def study_mood (study):
             return "Ohh this is the loved one! Make sure to read the book actively."
         case _:
             return "Subject not found"
-def health_mood (sleep, point):
+def health_mood (sleep):
     match sleep:
         case _ if sleep < 6:
-            point = point + 0
-            return "You are not sleeping enough😤", point
+            return "You are not sleeping enough😤", 0
         case _ if sleep > 8:
-            point = point + 0
-            return "You are sleeping too much🙄", point
+            return "You are sleeping too much🙄", 0
         case _ if 6 <= sleep <= 8:
-            point = point + 2
-            return "Yeah. That's the right number of hours to sleep💤", point
+            return "Yeah. That's the right number of hours to sleep💤", 2
         case _:
-            return "Invalid"
-def exercise_hours(exercise, point):
+            return "Invalid", 0
+def exercise_hours(exercise):
     match exercise:
         case _ if exercise == 1:
-            point = point + 3
-            return "Superb! Your routine should ideally be: stretches in the morning or evening and intense exercises on alternate day", point
+            return "Superb! Your routine should ideally be: stretches in the morning or evening and intense exercises on alternate day", 3
         case _ if exercise == 2:
-            point = point + 2
-            return "Good! but try at least doing body stretches everyday (morning or evening whatever suits you", point
+            return "Good! but try at least doing body stretches everyday (morning or evening whatever suits you", 2
         case _ if exercise == 3:
-            point = point + 1
-            return "Hmm... not good enough. Try finding a gym/exercise buddy who can remind you to stay consistent", point
+            return "Hmm... not good enough. Try finding a gym/exercise buddy who can remind you to stay consistent", 1
         case _ if exercise == 4:
-            point = point + 0
-            return "Well, you're in the worse category. Move your body, don't stay idle. If you keep being in this categoy, then you are going to lament this in the long run.", point
+            return "Well, you're in the worse category. Move your body, don't stay idle. If you keep being in this categoy, then you are going to lament this in the long run.", 0
         case _:
             print ("Invalid")
 def tech_mood (tech):
@@ -73,11 +68,11 @@ def tech_mood (tech):
 def participated_hackathons(hackathons):
     match hackathons:
         case _ if hackathons > 5:
-            print ("You are in a good place. Keep pushing forward!")
+            return "You are in a good place. Keep pushing forward!"
         case _ if hackathons < 5:
-            print ("Umm.. May be try out devpost, they host a lot of hackathons")
+            return "Umm.. May be try out devpost, they host a lot of hackathons"
         case _:
-            print ("Not a valid input")
+            return "Not a valid input"
 def chill_mood (chill):
     match chill:
         case "quote":
@@ -112,7 +107,7 @@ def main ():
         print ("✨⭐💗✨⭐💗✨⭐💗✨⭐💗✨")
         for x in reversed(range (1, 4)):
             print (f"Starting in {x}⌛...")
-            time.sleep (1)
+            time.sleep (0.75)
         print ("Select a mood")
         print ("1. Study")
         print ("2. Health")
@@ -120,7 +115,7 @@ def main ():
         print ("4. Chill")
         print ("5. Exit")
         print ("✨⭐💗✨⭐💗✨⭐💗✨⭐💗✨")
-        time.sleep (1)
+        time.sleep (0.75)
 
         user_mood = int(input ("Enter (1-5): "))
         print (AI_assistant(user_mood))
@@ -132,7 +127,9 @@ def main ():
             print ("1. Subject Related Tips")
             print ("2. Time Management")
             print ("3. Cope up stress")
+            time.sleep (0.5)
             study_question = int(input ("Enter (1-3): "))
+            time.sleep (0.5)
             if study_question == 1:
                 print ("Subjects:")
                 print ("Phy")
@@ -140,9 +137,11 @@ def main ():
                 print ("Bio")
                 time.sleep(0.5)
                 subject = input ("Enter a subject name: ")
+                time.sleep (0.75)
                 print (study_mood(subject))
             elif study_question == 2:
                 study_hours = int(input ("How many hours do you study a day"))
+                time.sleep (0.5)
                 if 3 < study_hours <= 5:
                     print (f"Remember Quality > Quantity. If you make the best out of these {study_hours} hours then this is more than enough!")
                 elif study_hours < 3:
@@ -153,13 +152,16 @@ def main ():
                     print ("Invalid input")
             elif study_question == 3:
                 stress = input ("Do you often have to go through academic stress? (Yes/No): "). lower ()
+                time.sleep (0.5)
                 if stress == "yes":
                     print ("The main causes of academic stress among students are:")
+                    time.sleep (0.3)
                     print ("1. Long hours studying")
                     print ("2. Perfectionism")
                     print ("3. Trying to impress parents and others")
                     print ("4. Cutting yourself completely off social life")
                     print ("5. Deciding not to 'waste' time in the little happy moments")
+                    time.sleep (0.3)
                     print ("To cope up with the stress, try working on these. You'll see yourself more happy, focused and healthier too.")
                 elif stress == "no":
                     print ("Keep Pushing champ!")
@@ -167,18 +169,23 @@ def main ():
                     print ("Invalid input")
         elif user_mood == 2:
             sleep_hours = int(input("Enter the number of whole hours u sleep: "))
-            message, point = health_mood(sleep_hours, points)
+            time.sleep (0.5)
+            message, points = health_mood(sleep_hours)
             print(message)
 
+            time.sleep (0.75)
             print("How often do you exercise?")
             print("1. Everyday")
             print("2. Alternate days")
             print("3. Few times in a month")
             print("4. I don't")
+            time.sleep (0.3)
             exercise = int(input("Select (1-4): "))
-            message, point = exercise_hours(exercise, points)
+            time.sleep (0.5)
+            message, points = exercise_hours(exercise)
             print(message)
-            print(f"Your total health points are {point}/5")
+            time.sleep (0.3)
+            print(f"Your total health points are {points}/5")
         elif user_mood == 3:
             print ("Enter a langauge u wanna learn.")
             print ("1. Python")
@@ -186,9 +193,12 @@ def main ():
             print ("3. HTML")
             time.sleep(0.5)
             languages = int (input ("Enter a number 1/2/3: "))
+            time.sleep (0.3)
             print (tech_mood(languages))
 
+            time.sleep (0.5)
             hackathons = int(input ("How many hackathons did you ever participated in: "))
+            time.sleep (0.3)
             print (participated_hackathons(hackathons))
         elif user_mood == 4:
             print ("Enter:")
@@ -196,9 +206,9 @@ def main ():
             print ("Analogy")
             time.sleep(0.5)
             fun = input ("Enter: "). lower()
+            time.sleep (0.5)
             print (chill_mood(fun))
         elif user_mood == 5:
-            print ("Ba bye!")
             is_running = False
 
     print ("It was so nice talking to you!")
