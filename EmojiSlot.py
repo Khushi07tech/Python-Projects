@@ -42,6 +42,8 @@ def main ():
             print ("Bet Amount can't be zero or less than zero")
             continue
 
+        balance -= bet
+
         row = spin_row ()
         print ("Spinning...")
         print_row (row)
@@ -54,7 +56,7 @@ def main ():
 
         balance += payout
 
-        play_again = input ("Do you want to play again? (Y/N) "). upper ()
+        play_again = input ("Do you want to play again? (Y/N): "). upper ()
         if not play_again == "Y":
             break
     print (f"Game Over! Your balance is {balance}")
