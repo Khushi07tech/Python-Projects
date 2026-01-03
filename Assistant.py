@@ -1,7 +1,6 @@
 import random
 import time
 
-
 def AI_assistant (moods):
     match moods:
         case 1:
