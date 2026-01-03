@@ -1,3 +1,4 @@
+#TO DO: Validate if a type A user types something greater than highest
 #A number guessing game in python
 import random
 import time
@@ -43,7 +44,6 @@ def main ():
         highest = 100
 
     computer = random.randint (lowest, highest)
-    print (computer)
     special_num = (10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
     specials = []
     guesses = 0
