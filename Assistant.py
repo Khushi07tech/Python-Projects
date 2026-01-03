@@ -147,7 +147,7 @@ def main ():
             elif study_question == 2:
                 study_hours = int(input ("How many hours 🕜 do you study a day: "))
                 time.sleep (0.5)
-                if 3 < study_hours <= 5:
+                if study_hours <= 5 and study_hours >=3:
                     print (f"Remember Quality > Quantity. If you make the best out of these {study_hours} hours then this is more than enough!")
                 elif study_hours < 3:
                     print ("Try studying a bit more everyday. Consistency beats intensity!💪")
