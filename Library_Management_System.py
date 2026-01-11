@@ -157,6 +157,10 @@ def main():
             else:
                 author = input ("Enter author's name: ").title()
                 isbn = input ("Enter isbn: ")
+                if not isbn:
+                    isbn = Library.total_books + 100000000
+                else:
+                    isbn = int (isbn)
                 new_book = Book (title, author, isbn, True)
                 library1.add_book(new_book)
                 print (f"'{title}' added to the library.")
