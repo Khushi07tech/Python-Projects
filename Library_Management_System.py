@@ -69,7 +69,7 @@ class Library:
 
     def find_book_by_title(self, title):
         for book in self.books:
-            if title == book.title:
+            if title.strip().title() == book.title.strip().title():
                 return book
         return None
 
@@ -149,11 +149,11 @@ def main():
             library1.show_borrowed_books()
 
         elif choice == 7:
-            title = input ("Enter a title: ").title()
+            title = input ("Enter a title: ").strip().title()
             existing_book = library1.find_book_by_title(title)
 
             if existing_book:
-                print ("Already found")
+                print (f"{existing_book} is already found")
             else:
                 author = input ("Enter author's name: ").title()
                 isbn = input ("Enter isbn: ")
