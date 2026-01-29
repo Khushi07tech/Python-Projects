@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QWidget, QLineEdit
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 import random
@@ -14,7 +14,13 @@ class MainWindow(QMainWindow):
         self.response = annoying_gpt_responses
         central_widget = QWidget(self)
         self.setCentralWidget (central_widget)
-        self.button = QPushButton ("What's AI", central_widget)
+
+        self.input_field = QLineEdit(central_widget)
+        self.input_field.setPlaceholderText("Type anything here...")
+        self.input_field.setGeometry(100, 180, 300, 40)
+        self.input_field.setFont(QFont("Arial", 12))
+
+        self.button = QPushButton ("Ask!", central_widget)
         self.label = QLabel ("You tap, I answer!", central_widget)
         self.initUI()
 
@@ -31,11 +37,11 @@ class MainWindow(QMainWindow):
         label2.setStyleSheet("font-style: italic;")
 
     def initUI (self):
-        self.button.setGeometry (150, 200, 200, 100)
+        self.button.setGeometry (150, 250, 200, 100)
         self.button.setStyleSheet("font-size: 30px;")
         self.button.clicked.connect (self.on_click)
 
-        self.label.setGeometry (50, 320, 400, 60)
+        self.label.setGeometry (50, 350, 400, 60)
         self.label.setStyleSheet("font-size: 15px;")
 
     def on_click (self):
@@ -43,7 +49,6 @@ class MainWindow(QMainWindow):
         response = random.choice (self.response)
         self.label.setText (response)
         self.button.setText ("Ask again")
-        self.button.setDisabled (False)
 
 def main ():
     app = QApplication(sys.argv)
