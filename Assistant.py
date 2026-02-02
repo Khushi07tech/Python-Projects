@@ -1,5 +1,11 @@
+# ======= Features Announcement =======
+#An API for Quote generation
+#An API for memes
+#A GUI Interface for this project
+
 import random
 import time
+from Quotes_generator import print_quotes, fetch_quotes, get_user_input
 
 def AI_assistant (moods):
     match moods:
@@ -80,14 +86,20 @@ def work_experience(experience):
 def chill_mood (chill):
     match chill:
         case "quote":
-            quotes = ["Collect moments💕, not things.😉",
-                      "Small steps 👢 every day 📆 add up to big results.",
-                      "Be the energy 😎 you want to attract.",
-                      "Happiness 😊 is an inside job.",
-                      "Don’t wait for opportunity, create it.😘😭",
-                      "It is not a cage if you've built it😉⭐"]
-            comp_quotes = random.choice(quotes)
-            return comp_quotes
+            num_quotes = get_user_input()
+
+            quotes = fetch_quotes(num_quotes)
+            for quote in quotes:
+                print_quotes(quote)
+            return "💕"
+            #quotes = ["Collect moments💕, not things.😉",
+             #         "Small steps 👢 every day 📆 add up to big results.",
+              #        "Be the energy 😎 you want to attract.",
+               #       "Happiness 😊 is an inside job.",
+                #      "Don’t wait for opportunity, create it.😘😭",
+                 #     "It is not a cage if you've built it😉⭐"]
+            #comp_quotes = random.choice(quotes)
+
         case "analogy":
             analogies = ["If you wanna do something, stick to it like a lizard sticks to ceiling😂🦎",
                          "Be as persistent as a 'Low Battery' notification when you’re at 1%.🔋😹",
