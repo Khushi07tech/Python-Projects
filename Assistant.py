@@ -92,13 +92,6 @@ def chill_mood (chill):
             for quote in quotes:
                 print_quotes(quote)
             return "💕"
-            #quotes = ["Collect moments💕, not things.😉",
-             #         "Small steps 👢 every day 📆 add up to big results.",
-              #        "Be the energy 😎 you want to attract.",
-               #       "Happiness 😊 is an inside job.",
-                #      "Don’t wait for opportunity, create it.😘😭",
-                 #     "It is not a cage if you've built it😉⭐"]
-            #comp_quotes = random.choice(quotes)
 
         case "analogy":
             analogies = ["If you wanna do something, stick to it like a lizard sticks to ceiling😂🦎",
