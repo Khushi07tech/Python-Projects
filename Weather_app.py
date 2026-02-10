@@ -1,4 +1,5 @@
 #Imports
+import os
 import sys
 import requests
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel,
@@ -22,7 +23,7 @@ class WeatherApp(QWidget):
     def initUI(self):
         #stuff
         self.setWindowTitle("WEATHER APP")
-
+        self.city_input.returnPressed.connect(self.fetch_weather)
         #layout
         vbox = QVBoxLayout()
 
@@ -85,7 +86,8 @@ class WeatherApp(QWidget):
     #fetch weather
     def fetch_weather(self):
         #key setup
-        api_key = "709ef30fe5307d459fc19d45c0233c75"
+        api_key = os.getenv("OPENWEATHER_API_KEY").strip()
+        print(api_key)
         city = self.city_input.text()
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
 
