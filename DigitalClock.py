@@ -26,9 +26,9 @@ class Digital_Clock(QWidget):
 
         self.time_label.setStyleSheet("""
                                        font-size: 100px;
-                                       color: hsl(111, 100%, 50%);
+                                       color: hsl(295, 36%, 20%);
                                       """)
-        self.setStyleSheet("background-color: black;")
+        self.setStyleSheet("background-color: hsl(295, 36%, 60%);")
 
         self.timer.timeout.connect(self.update_time)
         self.timer.start(1000)
