@@ -4,6 +4,9 @@
 **Author:** ✧･ﾟ: * ✨ <font color="#9b62ad">𝑲𝒉𝒖𝒔𝒉𝒃𝒂𝒌𝒉𝒕 𝑰𝒓𝒇𝒂𝒏</font> ✨ *:･ﾟ✧
 
 > ❝ Building cool things, one line of code at a time ❞
+
+> 💡 **Recruiter Note:** 
+> This repository represents my foundational laboratory and desktop UI experiments. For my production full-stack apps (Flask, SQLite3, HTML/CSS) and algorithmic logic labs, check out my pinned repos on my profile! 🚀
 ---
 
 ## 🚀 Project Gallery
@@ -26,6 +29,20 @@
       <code>PyQt5</code><br>
       <code>Requests (API)</code><br>
       <code>JSON</code>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>🧠 Mood Logger & GUI</b></td>
+    <td align="center"><i>Database Desktop App</i></td>
+    <td align="center">
+      <img src="Images/mood_pic1.png" width="120px" alt="Clock Hub Screenshot">
+      <img src="Images/mood_pic2.png" width="120px" alt="Clock Hub Screenshot">
+    </td>
+    <td>
+      <code>Python</code><br>
+      <code>PyQt5</code><br>
+      <code>SQLite3</code><br>
+      <code>Database</code>
     </td>
   </tr>
   <tr>
@@ -108,7 +125,7 @@
 ## Setup instructions:
 1. **Clone the repo:** `git clone https://github.com/Khushi07tech/python-odyssey.git`
 2. **Install requirements:** `pip install -r requirements.txt`
-3. **Run any app:** `python apps/calculator.py`
+3. **Run any app:** `python apps/mood_tracker/mood_tracker.py`
 
 ---
 
@@ -119,6 +136,6 @@ Mastered OOP principles, worked with APIs (Weather App), and explored GUI develo
 
 ## Roadmap & Future Goals
 I'm constantly learning! Here is what I plan to tackle next:
-- [ ] **Database Support:** Integrate `SQLite` into the Library System for persistent storage.
+- [x] **Database Support:** Integrated `SQLite` for persistent GUI app data logging. ✅
 - [ ] **Web Version:** Port the Weather Dashboard to the web using `Flask`.
 - [ ] **UX:** Implement a theme-switcher for all PyQt5 applications.
